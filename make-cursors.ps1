@@ -305,14 +305,14 @@ $s = Shrink-To32 $c.Bmp
 [System.IO.File]::WriteAllBytes((Join-Path $OutDir 'LighterArrow.cur'), (Get-CurBytes $s.Result 9 6))
 $s.Result.Dispose(); $s.Temp | ForEach-Object { $_.Dispose() }; $c.G.Dispose(); $c.Bmp.Dispose()
 
-Write-Host '[2/6] IBeam cursor (unchanged)...'
+Write-Host '[2/6] IBeam cursor (dark, readable over text)...'
 $c = New-Canvas
 $p = New-Object System.Drawing.Drawing2D.GraphicsPath
 $p.FillMode = [System.Drawing.Drawing2D.FillMode]::Winding
 Add-RoundRect $p 124 34 8 188 4
 Add-RoundRect $p 96 22 64 18 9
 Add-RoundRect $p 96 216 64 18 9
-$b = New-Object System.Drawing.Drawing2D.LinearGradientBrush((New-Object System.Drawing.Rectangle(96, 22, 64, 212)), [System.Drawing.Color]::FromArgb(255, 255, 140, 26), [System.Drawing.Color]::FromArgb(255, 255, 210, 63), [System.Drawing.Drawing2D.LinearGradientMode]::Vertical)
+$b = New-Object System.Drawing.Drawing2D.LinearGradientBrush((New-Object System.Drawing.Rectangle(96, 22, 64, 212)), [System.Drawing.Color]::FromArgb(255, 66, 72, 82), [System.Drawing.Color]::FromArgb(255, 22, 25, 30), [System.Drawing.Drawing2D.LinearGradientMode]::Vertical)
 $c.G.FillPath($b, $p); $b.Dispose()
 $pen = New-Object System.Drawing.Pen([System.Drawing.Color]::FromArgb(240, 255, 255, 255), 7)
 $c.G.DrawPath($pen, $p); $pen.Dispose(); $p.Dispose()
